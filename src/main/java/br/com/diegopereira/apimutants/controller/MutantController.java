@@ -6,6 +6,7 @@ import br.com.diegopereira.apimutants.service.MutantService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,6 +26,7 @@ public class MutantController {
     private final ModelMapper modelMapper;
 
     @PostMapping("/mutant")
+    @CacheEvict(value="Stats", allEntries=true)
     public ResponseEntity<Void> isMutant(@Valid @RequestBody MutantRequest mutantRequest) {
 
         log.info("Start verify DNA to match if is a mutant");
