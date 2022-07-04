@@ -16,7 +16,7 @@ import java.util.List;
 public class GlobalExceptionHandler extends RuntimeException {
 
     @ExceptionHandler(UnprocessableEntityException.class)
-    protected ResponseEntity handleUnprocessableException(GlobalException simpleMutantGlobalException) {
+    protected ResponseEntity<ErrorResponse> handleUnprocessableException(GlobalException simpleMutantGlobalException) {
         return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY)
                 .body(ErrorResponse.builder()
                         .code(simpleMutantGlobalException.getCode())
@@ -25,7 +25,7 @@ public class GlobalExceptionHandler extends RuntimeException {
     }
 
     @ExceptionHandler(PreConditionFailedException.class)
-    protected ResponseEntity handlePreConditionException(GlobalException simpleMutantGlobalException) {
+    protected ResponseEntity<ErrorResponse> handlePreConditionException(GlobalException simpleMutantGlobalException) {
         return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED)
                 .body(ErrorResponse.builder()
                         .code(simpleMutantGlobalException.getCode())
@@ -34,7 +34,7 @@ public class GlobalExceptionHandler extends RuntimeException {
     }
 
     @ExceptionHandler(DataIntegrityViolationException.class)
-    protected ResponseEntity handleDataIntegrityException() {
+    protected ResponseEntity<ErrorResponse> handleDataIntegrityException() {
         return ResponseEntity.status(HttpStatus.CONFLICT)
                 .body(ErrorResponse.builder()
                         .code(String.valueOf(HttpStatus.CONFLICT.value()))
@@ -43,7 +43,7 @@ public class GlobalExceptionHandler extends RuntimeException {
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    protected ResponseEntity handleDataIntegrityException(MethodArgumentNotValidException ex) {
+    protected ResponseEntity<ErrorResponse> handleDataIntegrityException(MethodArgumentNotValidException ex) {
         BindingResult result = ex.getBindingResult();
         List<FieldError> fieldErrors = result.getFieldErrors();
         StringBuilder errors = new StringBuilder();

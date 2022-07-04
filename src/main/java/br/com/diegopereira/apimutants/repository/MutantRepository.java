@@ -14,6 +14,5 @@ public interface MutantRepository extends JpaRepository<Mutant, Long> {
 
     @Query(value = "SELECT COUNT(*) filter (where is_mutant) as countMutantDna " +
             " FROM Mutant", nativeQuery = true)
-
     int getMutantsCount();
 }

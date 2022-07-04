@@ -5,7 +5,6 @@ import br.com.diegopereira.apimutants.exception.ErrorCode;
 import br.com.diegopereira.apimutants.exception.UnprocessableEntityException;
 import br.com.diegopereira.apimutants.repository.MutantRepository;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

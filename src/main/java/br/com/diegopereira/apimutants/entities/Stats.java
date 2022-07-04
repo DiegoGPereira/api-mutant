@@ -1,14 +1,25 @@
 package br.com.diegopereira.apimutants.entities;
 
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class Stats {
-    private int countMutantDna;
-    private int countHumanDna;
-    private double ratio;
 
     public Stats(int countHumanDna, int countMutantDna) {
         this.countMutantDna = countMutantDna;
         this.countHumanDna = countHumanDna;
-        this.ratio = (this.countHumanDna != 0) ? this.countMutantDna / this.countHumanDna : 0;
-        this.ratio = Math.abs(this.ratio);
+        this.setRatio(countHumanDna, countMutantDna);
+    }
+
+    private int countMutantDna;
+    private int countHumanDna;
+    @Setter(AccessLevel.NONE)
+    private double ratio;
+
+    public void setRatio(int countHumanDna, int countMutantDna) {
+        this.ratio = (countHumanDna != 0) ? (double) countMutantDna / countHumanDna : 0;
     }
 }

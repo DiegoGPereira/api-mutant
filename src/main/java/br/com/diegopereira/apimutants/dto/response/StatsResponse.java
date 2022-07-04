@@ -1,10 +1,14 @@
 package br.com.diegopereira.apimutants.dto.response;
 
-import lombok.*;
 
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import lombok.Getter;
+import lombok.Setter;
+
+@JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 @Getter
 @Setter
-@Builder
 public class StatsResponse {
 
     private int countMutantDna;
