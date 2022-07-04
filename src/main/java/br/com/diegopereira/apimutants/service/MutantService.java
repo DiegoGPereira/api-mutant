@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class MutantService {
 
-    private final int SIZE_SEQUENCE_MUTANT = 4;
+    private static final int SIZE_SEQUENCE_MUTANT = 4;
     private final MutantRepository mutantRepository;
 
     public void save(Mutant mutant) {
@@ -57,7 +57,8 @@ public class MutantService {
 
     private boolean isMutantVertical(String[] dna) {
 
-        int nrows = dna.length, ncols = dna[0].length();
+        int nrows = dna.length;
+        int ncols = dna[0].length();
         char sequenceCharAux = '\0';
         int sequenceCharCount = 1;
 
@@ -79,7 +80,8 @@ public class MutantService {
 
     private boolean isMutantDiagonalTopLeftToBottomRight(String[] dna) {
 
-        int nrows = dna.length, ncols = dna[0].length();
+        int nrows = dna.length;
+        int ncols = dna[0].length();
         char sequenceCharAux = '\0';
         int sequenceCharCount = 1;
 
@@ -114,7 +116,8 @@ public class MutantService {
 
     private boolean isMutantDiagonalTopRightToBottomLeft(String[] dna) {
 
-        int nrows = dna.length, ncols = dna[0].length();
+        int nrows = dna.length;
+        int ncols = dna[0].length();
         char sequenceCharAux = '\0';
         int sequenceCharCount = 1;
 

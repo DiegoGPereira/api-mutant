@@ -1,17 +1,13 @@
 package br.com.diegopereira.apimutants.exception;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
+@RequiredArgsConstructor
 public class GlobalException extends RuntimeException {
 
-    private String code;
-    private String message;
+    private final String code;
+    private final String message;
 
 }

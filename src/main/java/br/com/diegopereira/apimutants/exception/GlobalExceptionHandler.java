@@ -60,7 +60,7 @@ public class GlobalExceptionHandler extends RuntimeException {
     }
 
     @ExceptionHandler(Exception.class)
-    protected ResponseEntity handleException() {
+    protected ResponseEntity<ErrorResponse> handleException() {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .body(ErrorResponse.builder()
                         .code(String.valueOf(HttpStatus.INTERNAL_SERVER_ERROR.value()))
