@@ -27,6 +27,8 @@ public class MutantController {
     @PostMapping("/mutant")
     public ResponseEntity<Void> isMutant(@Valid @RequestBody MutantRequest mutantRequest) {
 
+        log.info("Start verify DNA to match if is a mutant");
+
         Mutant mutant = modelMapper.map(mutantRequest, Mutant.class);
 
         boolean isMutant = mutantService.isMutant(mutant.getDna());
@@ -34,6 +36,8 @@ public class MutantController {
         mutant.setMutant(isMutant);
 
         mutantService.save(mutant);
+
+        log.info("Finish verify DNA");
 
         return isMutant ?
                 ResponseEntity.status(HttpStatus.OK).build() :

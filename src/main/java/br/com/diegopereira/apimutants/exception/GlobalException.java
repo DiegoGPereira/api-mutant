@@ -7,7 +7,7 @@ import lombok.*;
 @RequiredArgsConstructor
 public class GlobalException extends RuntimeException {
 
-    private final String code;
     private final String message;
+    private final String code;
 
 }
