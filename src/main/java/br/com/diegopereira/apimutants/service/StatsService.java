@@ -13,13 +13,15 @@ public class StatsService {
 
     public Stats findStats() {
 
+        int humansCount = mutantRepository.getHumansCount();
+        int mutantsCount = mutantRepository.getMutantsCount();
 
+        double ratio = (humansCount != 0) ? (double) mutantsCount / humansCount : 0;
 
-        int mutantCount = mutantRepository.getMutantsCount();
-        int humanCount = mutantRepository.getHumansCount();
-
-
-
-        return new Stats(humanCount, mutantCount);
+        return Stats.builder()
+                .countMutantDna(mutantsCount)
+                .countHumanDna(humansCount)
+                .ratio(ratio)
+                .build();
     }
 }

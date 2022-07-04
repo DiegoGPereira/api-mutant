@@ -17,9 +17,6 @@ public class MutantServiceTest {
     @InjectMocks
     MutantService mutantService;
 
-    @Mock
-    MutantRepository mutantRepository;
-
     @Test
     public void shouldDnaIsMutantHorizontal() {
         String[] dna = DNAMock.mutantHorizontal();
